@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  openvpn-client:
+    container_name: docker-openvpn-client
+    image: adrixan/docker-openvpn-client:latest
+    # Volumes store your data between container upgrades
+    volumes:
+      - './etc-openvpn/:/etc/openvpn/'
+    dns:
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    privileged: true
+    network_mode: "host"
