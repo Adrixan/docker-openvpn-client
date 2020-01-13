@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM armhf/alpine
 RUN apk add --no-cache openvpn
 RUN echo "tun" >> /etc/modules
 RUN echo "net.ipv4.ip_forward = 1" >> /etc/sysctl.conf
